@@ -1,0 +1,38 @@
+using System;
+
+namespace ConsoleApp8
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int spiceYield = Math.Abs(int.Parse(Console.ReadLine()));
+
+            int remainingSpice = spiceYield;
+            int extractedSpice = 0;
+            int daysHarvested = 0;
+            int spiceYieldDrop = 10;
+            int spiceConsumed = 26;
+            int unprofitableYield = 100;
+
+            bool profitableYield = true;
+
+            while (profitableYield == true)
+            {
+                daysHarvested++;
+                extractedSpice += remainingSpice;
+                remainingSpice -= spiceYieldDrop;
+                extractedSpice -= spiceConsumed;
+
+                if (remainingSpice <= unprofitableYield)
+                {
+                    extractedSpice -= spiceConsumed;
+                    profitableYield = false;
+                }
+            }
+
+            Console.WriteLine(daysHarvested);
+            Console.WriteLine(extractedSpice);
+        }
+    }
+}
